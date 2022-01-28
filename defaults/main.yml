@@ -1,0 +1,4 @@
+---
+# k3s_configure_private_registries/defaults/main.yml
+
+node_type: 'server'
