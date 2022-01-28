@@ -1,0 +1,13 @@
+---
+# k3s_configure_private_registries/tasks/main.yml
+
+- name: 'Create the registries.yaml file'
+  template:
+    src: 'registries.yaml.j2'
+    dest: '/etc/rancher/k3s/registries.yaml'
+    owner: 'root'
+    group: 'root'
+    mode: '0600'
+  notify:
+    - 'Restart the k3s service on a server'
+    - 'Restart the k3s service on an agent'
