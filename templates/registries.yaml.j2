@@ -1,0 +1,6 @@
+mirrors:
+{% for mirror in mirrored_registries %}
+  {{ mirror.name }}:
+    endpoint:
+      - "{{ mirror.endpoint }}"
+{% endfor %}
