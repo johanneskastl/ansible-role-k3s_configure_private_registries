@@ -4,3 +4,12 @@ mirrors:
     endpoint:
       - "{{ mirror.endpoint }}"
 {% endfor %}
+{% if registry_configs is defined -%}
+configs:
+{% for registry in registry_configs %}
+  "{{ registry.url }}":
+    auth:
+      username: {{ registry.username }}
+      password: {{ registry.password }}
+{% endfor %}
+{% endif %}
