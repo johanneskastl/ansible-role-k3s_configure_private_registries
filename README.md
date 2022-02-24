@@ -15,6 +15,10 @@ Role Variables
 - `mirrored_registries`: a list of dicts containing the information for each of the private registries
   - `name`: the name of the mirrored registry
   - `endpoint` the endpoint to use for mirroring
+- `registry_configs`: a list of dicts containing the authentication information for each of the private registries
+  - `url`: the hostname and port for the registry, without `http://` or `https://`
+  - `username`: the username for this registry
+  - `password`: the password for this registry, should be stored in ansible-vault and not in cleartext...
 
 Dependencies
 ------------
@@ -36,6 +40,10 @@ Example Playbook
             endpoint: 'http://my-private-registry.example.com:5000'
           - name: 'ghcr.io'
             endpoint: 'http://my-private-registry.example.com:5000'
+        registry_configs:
+          - url: "my-private-registry.example.com:5000"
+            username: my-registry-user
+            password: should_be_in_vault_and_not_in_cleartext
 ```
 
 License
