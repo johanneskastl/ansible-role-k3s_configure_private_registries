@@ -16,7 +16,7 @@ configs:
 {% if registry.tls is defined %}
     tls:
 {% for key,value in registry.tls.items() %}
-	{{ key }}: {{ value }}
+      {{ key }}: {{ value }}
 {% endfor %}
 {% endif %}
 {% endfor %}
