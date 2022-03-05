@@ -17,8 +17,16 @@ Role Variables
   - `endpoint` the endpoint to use for mirroring
 - `registry_configs`: a list of dicts containing the authentication information for each of the private registries
   - `url`: the hostname and port for the registry, without `http://` or `https://`
-  - `username`: the username for this registry
-  - `password`: the password for this registry, should be stored in ansible-vault and not in cleartext...
+  - `auth`: list of key-value pairs
+    - `username`: the username for this registry
+    - `password`: the password for this registry, should be stored in ansible-vault and not in cleartext...
+  - `tls`: list of key-value pairs that will be looped over. Usable values are:
+    - `cert_file`
+    - `key_file`
+    - `ca_file`
+    - `insecure_skip_verify`
+    - you can of course set any value here, it is just that k3s does not understand other values than these... :-)
+    - See [the documentation](https://rancher.com/docs/k3s/latest/en/installation/private-registry/) for explanations on the values
 
 Dependencies
 ------------
@@ -42,8 +50,29 @@ Example Playbook
             endpoint: 'http://my-private-registry.example.com:5000'
         registry_configs:
           - url: "my-private-registry.example.com:5000"
-            username: my-registry-user
-            password: should_be_in_vault_and_not_in_cleartext
+            auth:
+              username: my-registry-user
+              password: should_be_in_vault_and_not_in_cleartext
+```
+
+```
+- hosts: servers
+  roles:
+    - role: 'johanneskastl.k3s_configure_private_registries'
+      vars:
+        mirrored_registries:
+          - name: 'docker.io'
+            endpoint: 'https://my-private-registry.example.com:5000'
+        registry_configs:
+          - url: "my-private-registry.example.com:5000"
+            auth:
+              username: my-registry-user
+              password: should_be_in_vault_and_not_in_cleartext
+            tls:
+              insecure_skip_verify: false
+              cert_file: 'path/to/a/certificate/file'
+              key_file: '/path/to/a/key/file'
+              ca_file: '/path/to/the/ca/file'
 ```
 
 License
