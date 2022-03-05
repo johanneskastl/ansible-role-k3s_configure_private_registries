@@ -12,12 +12,12 @@ configs:
     auth:
       username: {{ registry.auth.username }}
       password: {{ registry.auth.password }}
-    {%- endif %}
-    {%- if registry.tls is defined -%}
+{% endif %}
+{% if registry.tls is defined %}
     tls:
-      {%- for key,value in registry.tls.items() %}
+{% for key,value in registry.tls.items() %}
 	{{ key }}: {{ value }}
-      {% endfor %}
-    {% endif %}
+{% endfor %}
+{% endif %}
 {% endfor %}
 {% endif %}
