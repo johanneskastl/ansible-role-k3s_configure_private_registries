@@ -8,8 +8,10 @@ mirrors:
 configs:
 {% for registry in registry_configs %}
   "{{ registry.url }}":
+    {% if registry.auth is defined -%}
     auth:
-      username: {{ registry.username }}
-      password: {{ registry.password }}
+      username: {{ registry.auth.username }}
+      password: {{ registry.auth.password }}
+    {%- endif %}
 {% endfor %}
 {% endif %}
