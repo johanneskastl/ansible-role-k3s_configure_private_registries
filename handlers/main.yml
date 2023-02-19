@@ -2,13 +2,13 @@
 # k3s_configure_private_registries/handlers/main.yml
 
 - name: 'Restart the k3s service on a server'
-  service:
+  ansible.builtin.service:
     name: 'k3s.service'
     state: 'restarted'
   when: 'node_type == "server"'
 
 - name: 'Restart the k3s service on an agent'
-  service:
+  ansible.builtin.service:
     name: 'k3s-agent.service'
     state: 'restarted'
   when: 'node_type == "agent"'
