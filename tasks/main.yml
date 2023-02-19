@@ -2,7 +2,7 @@
 # k3s_configure_private_registries/tasks/main.yml
 
 - name: 'Create the registries.yaml file'
-  template:
+  ansible.builtin.template:
     src: 'registries.yaml.j2'
     dest: '/etc/rancher/k3s/registries.yaml'
     owner: 'root'
