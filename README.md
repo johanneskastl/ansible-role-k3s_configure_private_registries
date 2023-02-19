@@ -1,3 +1,5 @@
+![Ansible Lint](https://github.com/johanneskastl/ansible-role-k3s_configure_private_registries/workflows/Ansible%20Lint/badge.svg)
+
 k3s_configure_private_registries
 =========
 
