@@ -16,7 +16,15 @@ configs:
 {% if registry.tls is defined %}
     tls:
 {% for key,value in registry.tls.items() %}
+{% if key == "insecure_skip_verify" %}
+{% if key | bool %}
+      insecure_skip_verify: true
+{% else %}
+      insecure_skip_verify: false
+{% endif %}
+{% else %}
       {{ key }}: {{ value }}
+{% endif %}
 {% endfor %}
 {% endif %}
 {% endfor %}
