@@ -1,9 +1,11 @@
 mirrors:
+{% if mirrored_registries is defined -%}
 {% for mirror in mirrored_registries %}
   {{ mirror.name }}:
     endpoint:
       - "{{ mirror.endpoint }}"
 {% endfor %}
+{% endif %}
 {% if registry_configs is defined -%}
 configs:
 {% for registry in registry_configs %}
