@@ -3,7 +3,6 @@ galaxy_info:
   namespace: 'johanneskastl'
   author: 'Johannes Kastl'
   description: 'Configure k3s to use a private registry via the registries.yaml file'
-  company: 'B1 Systems GmbH'
 
   license: 'BSD-3-Clause'
 
