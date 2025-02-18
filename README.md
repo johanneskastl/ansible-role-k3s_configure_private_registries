@@ -85,4 +85,4 @@ BSD-3-Clause
 Author Information
 ------------------
 
-I am Johannes Kastl, reachable via kastl@b1-systems.de.
+I am Johannes Kastl, reachable via git@johannes-kastl.de.
